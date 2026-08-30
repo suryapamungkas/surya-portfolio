@@ -1,89 +1,123 @@
-# Portfolio V5
+# Surya Pamungkas — Personal Portfolio 🚀
 
-Hello everyone\! 👋
+<div align="center">
+  <img src="public/PP-Crop.png" alt="Surya Pamungkas" width="120" style="border-radius: 50%;" />
+  
+  <h3>Full Stack Developer & AI Engineer Enthusiast</h3>
 
-Let me introduce myself, I'm **Eki Zulfar Rachman**. On this occasion, I'd like to share the portfolio website project that I've developed. built with React and Supabase, featuring a public-facing site and an admin dashboard.
+  <p align="center">
+    <a href="https://suryapamungkas.vercel.app"><strong>Explore Live Demo »</strong></a>
+    <br />
+    <br />
+    <a href="https://suryapamungkas.vercel.app">View Website</a>
+    ·
+    <a href="https://github.com/suryapamungkas/surya-portfolio/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/suryapamungkas/surya-portfolio/issues">Request Feature</a>
+  </p>
 
-**Live Demo:** [https://ekizr.com](https://ekizr.com)
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+    <img src="https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=3ECF8E" alt="Supabase" />
+    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+  </p>
+</div>
+
+---
+
+## 📖 About The Project
+
+A modern, highly polished, and responsive personal portfolio crafted with **React, Vite, and Tailwind CSS**. Designed with an elegant **Premium Minimalist Dark Theme (Glassmorphism)**, this website serves as a central showcase for full-stack web applications, AI/ML models, professional certifications, and technical accomplishments.
+
+### 🌟 Key Highlights
+- **Premium Minimalist Dark Aesthetic:** Built using custom glassmorphism layers (`bg-white/5`, `border-white/10`, and smooth silver sheen gradients).
+- **Featured Projects:**
+  - **TrustChain UMKM:** Supply chain verification infrastructure for export-import MSMEs leveraging Blockchain and AI Analytics.
+  - **Root Fact App:** AI-powered computer vision application for real-time vegetable detection and interactive botanical discovery.
+- **Interactive Feedback System:** Real-time visitor comments & feedback powered by Supabase with administrative moderation (pin/unpin).
+- **Smooth Interactive Experience:** Optimized animations orchestrated via **Framer Motion** and **AOS (Animate On Scroll)**.
+- **SEO & Social Sharing Ready:** OpenGraph and schema metadata integrated with `react-helmet-async`.
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project is built using modern web technologies:
+### Frontend & Core
+- **Framework:** [React.js](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons & UI:** [Lucide React](https://lucide.dev/), [SweetAlert2](https://sweetalert2.github.io/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/), [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
+- **SEO & Meta:** [React Helmet Async](https://github.com/staylor/react-helmet-async)
 
-  - **ReactJS** - Frontend framework
-  - **Tailwind CSS** - Utility-first CSS framework
-  - **Supabase** - Backend for portfolio data, certificates, and comment system
-  - **AOS** - Animate On Scroll library
-  - **Framer Motion** - Animation library
-  - **Lucide** - Icon library
-  - **Material UI** - React component library
-  - **SweetAlert2** - Beautiful alert dialogs
-
----
-
-## User Roles
-
-| Role | Access |
-|---|---|
-| **Visitor (Public)** | View projects, certificates, and comments — leave a comment |
-| **Admin** | Login to dashboard — full CRUD on projects & certificates — delete & pin/unpin comments |
+### Backend & Infrastructure
+- **Database & Realtime:** [Supabase](https://supabase.com/) (PostgreSQL & Realtime Channels)
+- **Deployment:** [Vercel](https://vercel.com/)
 
 ---
 
-## Getting Started
+## 📁 Repository Structure
+
+```plaintext
+surya-portfolio/
+├── public/                 # Static assets, certificate images & project screenshots
+├── src/
+│   ├── components/         # Reusable UI components (Navbar, Background, Cards, etc.)
+│   ├── Pages/              # Page views (Home, About, Portfolio, Contact, etc.)
+│   ├── utils/              # Utility functions & helper scripts
+│   ├── App.jsx             # Application routes & layouts
+│   ├── index.css           # Global CSS and scrollbar configurations
+│   ├── main.jsx            # React root mount
+│   └── supabase.js         # Supabase client configuration
+├── index.html              # HTML template & SEO header tags
+├── package.json            # Project dependencies & scripts
+├── tailwind.config.js      # Tailwind CSS theme extensions
+└── vite.config.js          # Vite build configuration
+```
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to set up and run the project locally on your machine.
 
 ### Prerequisites
+- [Node.js](https://nodejs.org/) (Version `>= 18.x` recommended)
+- `npm` or `yarn`
 
-- Node.js `>= 14.x`
-- npm or yarn
-
-### 1. Clone & Install
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/EkiZR/Portofolio_V5.git
-cd Portofolio_V5
+git clone https://github.com/suryapamungkas/surya-portfolio.git
+cd surya-portfolio
+```
+
+### 2. Install Dependencies
+```bash
 npm install
 ```
 
-> If you encounter peer dependency issues: `npm install --legacy-peer-deps`
-
-### 2. Environment Variables
-
+### 3. Configure Environment Variables
 Create a `.env` file in the root directory:
-
 ```env
 VITE_SUPABASE_URL=your-supabase-project-url
 VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-> Find these in your Supabase project under **Settings → API**.  
-> ⚠️ Never commit `.env` to version control — make sure it's in `.gitignore`.
-
-### 3. Supabase Client (`src/supabase.js`)
-
-```javascript
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Supabase credentials missing. Check your .env file.')
-}
-
-export const supabase = createClient(supabaseUrl, supabaseKey)
+### 4. Start Development Server
+```bash
+npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the application.
 
-### 4. Database Setup
+---
 
-Go to your Supabase project → **SQL Editor** → run the script below (run once):
+## 📦 Database Schema Setup (Supabase)
+
+If setting up your own database instance, run the following DDL in the **Supabase SQL Editor**:
 
 ```sql
--- ============================
--- TABLES
--- ============================
+-- Projects Table
 CREATE TABLE public.projects (
   id bigint GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
   title text,
@@ -98,12 +132,14 @@ CREATE TABLE public.projects (
   created_at timestamptz DEFAULT now()
 );
 
+-- Certificates Table
 CREATE TABLE public.certificates (
   id bigint GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
   img text,
   created_at timestamptz DEFAULT now()
 );
 
+-- Realtime Portfolio Comments Table
 CREATE TABLE public.portfolio_comments (
   id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   content text NOT NULL,
@@ -112,168 +148,19 @@ CREATE TABLE public.portfolio_comments (
   is_pinned boolean DEFAULT false,
   created_at timestamptz DEFAULT now()
 );
-
-CREATE TABLE public.profiles (
-  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  username text UNIQUE NOT NULL,
-  role text NOT NULL CHECK (role IN ('admin', 'user')),
-  created_at timestamptz DEFAULT now()
-);
-
--- ============================
--- RLS
--- ============================
-ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.certificates ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.portfolio_comments ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "public read projects"
-ON public.projects FOR SELECT USING (true);
-
-CREATE POLICY "public read certificates"
-ON public.certificates FOR SELECT USING (true);
-
-CREATE POLICY "public read comments"
-ON public.portfolio_comments FOR SELECT USING (true);
-
-CREATE POLICY "public insert comment"
-ON public.portfolio_comments FOR INSERT
-WITH CHECK (is_pinned = false);
-
-CREATE POLICY "admin manage projects"
-ON public.projects FOR ALL
-USING (
-  EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = auth.uid() AND role = 'admin'
-  )
-);
-
-CREATE POLICY "admin manage certificates"
-ON public.certificates FOR ALL
-USING (
-  EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = auth.uid() AND role = 'admin'
-  )
-);
-
-CREATE POLICY "admin manage comments"
-ON public.portfolio_comments FOR UPDATE, DELETE
-USING (
-  EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = auth.uid() AND role = 'admin'
-  )
-);
-
--- ============================
--- STORAGE
--- ============================
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('project-images', 'project-images', true)
-ON CONFLICT DO NOTHING;
-
-CREATE POLICY "admin upload project images"
-ON storage.objects FOR INSERT
-WITH CHECK (
-  bucket_id = 'project-images'
-  AND EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = auth.uid() AND role = 'admin'
-  )
-);
-
-CREATE POLICY "public read project images"
-ON storage.objects FOR SELECT
-USING (bucket_id = 'project-images');
-
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('certificate-images', 'certificate-images', true)
-ON CONFLICT DO NOTHING;
-
-CREATE POLICY "admin upload certificate images"
-ON storage.objects FOR INSERT
-WITH CHECK (
-  bucket_id = 'certificate-images'
-  AND EXISTS (
-    SELECT 1 FROM public.profiles
-    WHERE id = auth.uid() AND role = 'admin'
-  )
-);
-
-CREATE POLICY "public read certificate images"
-ON storage.objects FOR SELECT
-USING (bucket_id = 'certificate-images');
 ```
-
-### 5. Enable Realtime (Comments)
-
-Go to **Table Editor → portfolio_comments → Enable Realtime**.
-
-### 6. Create Admin Account
-
-**Step 1** — Go to **Authentication → Users → Add User** in Supabase Dashboard, then copy the generated User ID.
-
-**Step 2** — Run this in the SQL Editor (replace `USER_UUID` with the copied ID):
-
-```sql
-INSERT INTO public.profiles (id, username, role)
-VALUES ('USER_UUID', 'eki', 'admin');
-```
-
-### 7. Run Locally
-
-```bash
-npm run dev
-```
-
-Open `http://localhost:5173` in your browser.
 
 ---
 
-## Pages & Features
+## 📬 Connect with Me
 
-### Public (Visitor)
-- **Home** — Hero section, about, skills
-- **Projects** — List of published projects with detail modal
-- **Certificates** — Certificate gallery
-- **Comments** — View all comments, submit a new comment with name and optional profile photo
-
-### Admin (Dashboard)
-- **Login Page** — Email & password authentication via Supabase Auth
-- **Dashboard** — Overview panel after login
-- **Projects** — Create, edit, delete projects; manage image, links, features, tech stack, publish status, and order
-- **Certificates** — Upload and delete certificate images
-- **Comments** — View all comments; pin/unpin for highlighting; delete inappropriate comments
+- **Website:** [suryapamungkas.vercel.app](https://suryapamungkas.vercel.app)
+- **LinkedIn:** [linkedin.com/in/suryapamungkas](https://www.linkedin.com/in/suryapamungkas)
+- **GitHub:** [@suryapamungkas](https://github.com/suryapamungkas)
+- **Instagram:** [@suryaszy](https://www.instagram.com/suryaszy)
 
 ---
 
-## Build for Production
-
-```bash
-npm run build
-```
-
-Upload the contents of the `dist/` folder to your hosting provider.
-
----
-
-## Troubleshooting
-
-- Ensure Node.js is installed and you're in the correct directory.
-- Double-check your `.env` values and restart the dev server after changes.
-- If RLS is blocking requests, verify the `profiles` row exists for your admin user.
-- Clear browser cache if you see stale data.
-
----
-
-## Credits & Contact
-
-**Eki Zulfar Rachman**  
-Website: [eki.my.id](https://ekizr.com) · GitHub: [EkiZR](https://github.com/EkiZR)
-
-Thanks to [LottieFiles](https://lottiefiles.com/free-animation/coding-NWhbxMOVgP) and Claude.
-
-⭐ If this project helped you, consider giving it a star on GitHub!
+<div align="center">
+  <sub>Designed & Developed with ❤️ by <strong>Nur Hidayat Surya Pamungkas</strong></sub>
+</div>
