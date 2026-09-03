@@ -14,18 +14,40 @@ import {
   Package,
   Cpu,
   Code,
+  BrainCircuit,
+  Sparkles,
+  Smartphone,
+  Zap,
+  Database,
+  BarChart3,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
+import { predefinedProjects } from "../data/projects";
 
 const TECH_ICONS = {
   React: Globe,
+  "React 19": Globe,
+  TypeScript: Code,
+  Vite: Cpu,
   Tailwind: Layout,
+  "Tailwind CSS": Layout,
   Express: Cpu,
   Python: Code,
   Javascript: Code,
+  JavaScript: Code,
   HTML: Code,
   CSS: Code,
+  "TensorFlow.js": BrainCircuit,
+  "Transformers.js": Sparkles,
+  PWA: Smartphone,
+  WebGPU: Zap,
+  FastAPI: Zap,
+  Streamlit: BarChart3,
+  Docker: Package,
+  SQLite: Database,
+  "AI Analysis": BrainCircuit,
+  Blockchain: Layers,
   default: Package,
 };
 
@@ -127,9 +149,13 @@ const ProjectDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    // Cari project berdasarkan slug yang di-generate dari Title
-    const selectedProject = storedProjects.find(
-      (p) => toSlug(p.Title) === slug,
+    const allProjects = [...storedProjects, ...predefinedProjects];
+    // Cari project berdasarkan slug yang di-generate dari Title atau id
+    const selectedProject = allProjects.find(
+      (p) =>
+        toSlug(p.Title) === slug ||
+        p.id === slug ||
+        toSlug(p.id || "") === slug,
     );
 
     if (selectedProject) {
@@ -213,15 +239,17 @@ const ProjectDetails = () => {
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16">
             <div className="flex items-center space-x-2 md:space-x-4 mb-8 md:mb-12 animate-fadeIn">
               <button
+                type="button"
                 onClick={() => navigate(-1)}
-                className="group inline-flex items-center space-x-1.5 md:space-x-2 px-3 md:px-5 py-2 md:py-2.5 bg-white/5 backdrop-blur-xl rounded-xl text-white/90 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 text-sm md:text-base"
+                aria-label="Go back to previous page"
+                className="group inline-flex items-center space-x-1.5 md:space-x-2 px-3 md:px-5 py-2 md:py-2.5 bg-white/5 backdrop-blur-xl rounded-xl text-white/90 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
               >
-                <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
                 <span>Back</span>
               </button>
               <div className="flex items-center space-x-1 md:space-x-2 text-sm md:text-base text-white/50">
                 <span>Projects</span>
-                <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
+                <ChevronRight className="w-3 h-3 md:w-4 md:h-4" aria-hidden="true" />
                 <span className="text-white/90 truncate">{project.Title}</span>
               </div>
             </div>
@@ -232,7 +260,7 @@ const ProjectDetails = () => {
                   <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-500 bg-clip-text text-transparent leading-tight">
                     {project.Title}
                   </h1>
-                  <div className="relative h-1 w-16 md:w-24">
+                  <div className="relative h-1 w-16 md:w-24" aria-hidden="true">
                     <div className="absolute inset-0 bg-gradient-to-r from-zinc-400 to-zinc-600 rounded-full animate-pulse" />
                     <div className="absolute inset-0 bg-gradient-to-r from-zinc-400 to-zinc-600 rounded-full blur-sm" />
                   </div>
@@ -251,10 +279,11 @@ const ProjectDetails = () => {
                     href={project.Link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-white/5 hover:bg-white/10 text-zinc-300 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                    aria-label={`View live demo of ${project.Title}`}
+                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-white/5 hover:bg-white/10 text-zinc-300 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-xl overflow-hidden text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                   >
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-zinc-500/10 to-zinc-700/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                    <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-zinc-500/10 to-zinc-700/10 transition-transform duration-300 group-hover:translate-y-[0%]" aria-hidden="true" />
+                    <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" aria-hidden="true" />
                     <span className="relative font-medium">Live Demo</span>
                   </a>
 
@@ -262,20 +291,21 @@ const ProjectDetails = () => {
                     href={project.Github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-white/5 hover:bg-white/10 text-zinc-300 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                    aria-label={`View source code of ${project.Title} on GitHub`}
+                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-white/5 hover:bg-white/10 text-zinc-300 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-xl overflow-hidden text-sm md:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                     onClick={(e) =>
                       !handleGithubClick(project.Github) && e.preventDefault()
                     }
                   >
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-zinc-500/10 to-zinc-700/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                    <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-zinc-500/10 to-zinc-700/10 transition-transform duration-300 group-hover:translate-y-[0%]" aria-hidden="true" />
+                    <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" aria-hidden="true" />
                     <span className="relative font-medium">Github</span>
                   </a>
                 </div>
 
                 <div className="space-y-4 md:space-y-6">
                   <h3 className="text-lg md:text-xl font-semibold text-zinc-100 mt-[3rem] md:mt-0 flex items-center gap-2 md:gap-3">
-                    <Code2 className="w-4 h-4 md:w-5 md:h-5 text-zinc-400" />
+                    <Code2 className="w-4 h-4 md:w-5 md:h-5 text-zinc-400" aria-hidden="true" />
                     Technologies Used
                   </h3>
                   {project.TechStack.length > 0 ? (
@@ -294,18 +324,20 @@ const ProjectDetails = () => {
 
               <div className="space-y-6 md:space-y-10 animate-slideInRight">
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
                   <img
                     src={project.Img}
-                    alt={project.Title}
+                    alt={`Preview of ${project.Title}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" />
+                  <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" aria-hidden="true" />
                 </div>
 
                 <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 space-y-6 hover:border-white/20 transition-colors duration-300 group">
                   <h3 className="text-xl font-semibold text-zinc-100 flex items-center gap-3">
-                    <Star className="w-5 h-5 text-zinc-400 group-hover:rotate-[20deg] transition-transform duration-300" />
+                    <Star className="w-5 h-5 text-zinc-400 group-hover:rotate-[20deg] transition-transform duration-300" aria-hidden="true" />
                     Key Features
                   </h3>
                   {project.Features.length > 0 ? (

@@ -29,7 +29,9 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
           <div className="relative overflow-hidden rounded-lg">
             <img
               src={Img}
-              alt={Title}
+              alt={`Screenshot of ${Title}`}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover aspect-[16/8] transform group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -50,10 +52,11 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleLiveDemo}
-                  className="inline-flex items-center space-x-2 text-zinc-300 hover:text-zinc-100 transition-colors duration-200"
+                  aria-label={`View live demo of ${Title}`}
+                  className="inline-flex items-center space-x-2 text-zinc-300 hover:text-zinc-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded"
                 >
                   <span className="text-sm font-medium">Live Demo</span>
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 </a>
               ) : (
                 <span className="text-zinc-500 text-sm">
@@ -65,10 +68,11 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                 <Link
                   to={`/project/${toSlug(Title)}`}
                   onClick={handleDetails}
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/10 transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-zinc-500/50"
+                  aria-label={`View details of ${Title}`}
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/10 transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                 >
                   <span className="text-sm font-medium">Details</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               ) : (
                 <span className="text-zinc-500 text-sm">
@@ -78,7 +82,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
             </div>
           </div>
 
-          <div className="absolute inset-0 border border-transparent group-hover:border-indigo-100 rounded-xl transition-colors duration-300 -z-50"></div>
+          <div className="absolute inset-0 border border-transparent group-hover:border-white/10 rounded-xl transition-colors duration-300 -z-50" aria-hidden="true"></div>
         </div>
       </div>
     </div>

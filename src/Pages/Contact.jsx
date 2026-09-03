@@ -168,10 +168,15 @@ const ContactPage = () => {
                 data-aos-delay="100"
                 className="relative group"
               >
-                <User className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors" />
+                <label htmlFor="contact-name" className="visually-hidden">
+                  Your Name (Required)
+                </label>
+                <User className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors pointer-events-none" aria-hidden="true" />
                 <input
                   type="text"
+                  id="contact-name"
                   name="name"
+                  autoComplete="name"
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
@@ -185,10 +190,15 @@ const ContactPage = () => {
                 data-aos-delay="200"
                 className="relative group"
               >
-                <Mail className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors" />
+                <label htmlFor="contact-email" className="visually-hidden">
+                  Your Email (Required)
+                </label>
+                <Mail className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors pointer-events-none" aria-hidden="true" />
                 <input
                   type="email"
+                  id="contact-email"
                   name="email"
+                  autoComplete="email"
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
@@ -202,8 +212,12 @@ const ContactPage = () => {
                 data-aos-delay="300"
                 className="relative group"
               >
-                <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors" />
+                <label htmlFor="contact-message" className="visually-hidden">
+                  Your Message (Required)
+                </label>
+                <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-zinc-500 group-focus-within:text-zinc-300 transition-colors pointer-events-none" aria-hidden="true" />
                 <textarea
+                  id="contact-message"
                   name="message"
                   placeholder="Your Message"
                   value={formData.message}
@@ -218,9 +232,9 @@ const ContactPage = () => {
                 data-aos-delay="400"
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-zinc-100 text-zinc-900 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-500/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-zinc-100 text-zinc-900 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-500/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-5 h-5" aria-hidden="true" />
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>

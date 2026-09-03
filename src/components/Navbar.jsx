@@ -52,6 +52,16 @@ const Navbar = () => {
         }
     }, [isOpen]);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape" && isOpen) {
+                setIsOpen(false);
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [isOpen]);
+
     const scrollToSection = (e, href) => {
         e.preventDefault();
         const section = document.querySelector(href);
@@ -66,7 +76,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav
+        <header
             className={`fixed w-full top-0 z-50 transition-all duration-500 ${
                 isOpen
                     ? "bg-black/80 backdrop-blur-2xl border-b border-white/5"
@@ -75,7 +85,7 @@ const Navbar = () => {
                     : "bg-transparent"
             }`}
         >
-            <div className="mx-auto px-[5%] sm:px-[5%] lg:px-[10%]">
+            <nav aria-label="Main Navigation" className="mx-auto px-[5%] sm:px-[5%] lg:px-[10%]">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <div className="flex-shrink-0">
@@ -91,54 +101,64 @@ const Navbar = () => {
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
                         <div className="ml-8 flex items-center space-x-8">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.label}
-                                    href={item.href}
-                                    onClick={(e) => scrollToSection(e, item.href)}
-                                    className="group relative px-1 py-2 text-sm font-medium"
-                                >
-                                    <span
-                                        className={`relative z-10 transition-colors duration-300 ${
-                                            activeSection === item.href.substring(1)
-                                                ? "text-zinc-100 font-semibold"
-                                                : "text-zinc-400 group-hover:text-zinc-200"
-                                        }`}
+                            {navItems.map((item) => {
+                                const isActive = activeSection === item.href.substring(1);
+                                return (
+                                    <a
+                                        key={item.label}
+                                        href={item.href}
+                                        onClick={(e) => scrollToSection(e, item.href)}
+                                        aria-current={isActive ? "page" : undefined}
+                                        className="group relative px-1 py-2 text-sm font-medium"
                                     >
-                                        {item.label}
-                                    </span>
-                                    <span
-                                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-zinc-200 to-zinc-500 transform origin-left transition-transform duration-300 ${
-                                            activeSection === item.href.substring(1)
-                                                ? "scale-x-100"
-                                                : "scale-x-0 group-hover:scale-x-100"
-                                        }`}
-                                    />
-                                </a>
-                            ))}
+                                        <span
+                                            className={`relative z-10 transition-colors duration-300 ${
+                                                isActive
+                                                    ? "text-zinc-100 font-semibold"
+                                                    : "text-zinc-400 group-hover:text-zinc-200"
+                                            }`}
+                                        >
+                                            {item.label}
+                                        </span>
+                                        <span
+                                            className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-zinc-200 to-zinc-500 transform origin-left transition-transform duration-300 ${
+                                                isActive
+                                                    ? "scale-x-100"
+                                                    : "scale-x-0 group-hover:scale-x-100"
+                                            }`}
+                                        />
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
         
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
                         <button
+                            type="button"
                             onClick={() => setIsOpen(!isOpen)}
+                            aria-expanded={isOpen}
+                            aria-controls="mobile-nav"
+                            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
                             className={`relative p-2 text-zinc-400 hover:text-zinc-100 transition-transform duration-300 ease-in-out transform ${
                                 isOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"
                             }`}
                         >
                             {isOpen ? (
-                                <X className="w-6 h-6" />
+                                <X className="w-6 h-6" aria-hidden="true" />
                             ) : (
-                                <Menu className="w-6 h-6" />
+                                <Menu className="w-6 h-6" aria-hidden="true" />
                             )}
                         </button>
                     </div>
                 </div>
-            </div>
+            </nav>
         
             {/* Mobile Menu */}
             <div
+                id="mobile-nav"
+                aria-label="Mobile Navigation"
                 className={`md:hidden transition-all duration-300 ease-in-out ${
                     isOpen
                         ? "max-h-screen opacity-100"
@@ -146,28 +166,32 @@ const Navbar = () => {
                 }`}
             >
                 <div className="px-4 py-6 space-y-4">
-                    {navItems.map((item, index) => (
-                        <a
-                            key={item.label}
-                            href={item.href}
-                            onClick={(e) => scrollToSection(e, item.href)}
-                            className={`block px-4 py-3 text-lg font-medium transition-all duration-300 ease ${
-                                activeSection === item.href.substring(1)
-                                    ? "text-zinc-100 font-semibold"
-                                    : "text-zinc-400 hover:text-zinc-200"
-                            }`}
-                            style={{
-                                transitionDelay: `${index * 100}ms`,
-                                transform: isOpen ? "translateX(0)" : "translateX(50px)",
-                                opacity: isOpen ? 1 : 0,
-                            }}
-                        >
-                            {item.label}
-                        </a>
-                    ))}
+                    {navItems.map((item, index) => {
+                        const isActive = activeSection === item.href.substring(1);
+                        return (
+                            <a
+                                key={item.label}
+                                href={item.href}
+                                onClick={(e) => scrollToSection(e, item.href)}
+                                aria-current={isActive ? "page" : undefined}
+                                className={`block px-4 py-3 text-lg font-medium transition-all duration-300 ease ${
+                                    isActive
+                                        ? "text-zinc-100 font-semibold"
+                                        : "text-zinc-400 hover:text-zinc-200"
+                                }`}
+                                style={{
+                                    transitionDelay: `${index * 100}ms`,
+                                    transform: isOpen ? "translateX(0)" : "translateX(50px)",
+                                    opacity: isOpen ? 1 : 0,
+                                }}
+                            >
+                                {item.label}
+                            </a>
+                        );
+                    })}
                 </div>
             </div>
-        </nav>
+        </header>
     );
 };
 

@@ -20,9 +20,9 @@ const Header = memo(() => (
       data-aos="zoom-in-up"
       data-aos-duration="800"
     >
-      <Sparkles className="w-5 h-5 text-zinc-400" />
-      Transforming ideas into digital experiences
-      <Sparkles className="w-5 h-5 text-zinc-400" />
+      <Sparkles className="w-5 h-5 text-zinc-400" aria-hidden="true" />
+      <span>Transforming ideas into digital experiences</span>
+      <Sparkles className="w-5 h-5 text-zinc-400" aria-hidden="true" />
     </p>
   </div>
 ));
@@ -35,7 +35,7 @@ const ProfileImage = memo(() => (
       data-aos-duration="1000"
     >
       {/* Optimized gradient backgrounds with reduced complexity for mobile */}
-      <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block">
+      <div className="absolute -inset-6 opacity-[25%] z-0 hidden sm:block" aria-hidden="true">
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 via-zinc-800 to-zinc-900 rounded-full blur-2xl animate-spin-slower" />
         <div className="absolute inset-0 bg-gradient-to-l from-zinc-800 via-zinc-700 to-zinc-900 rounded-full blur-2xl animate-pulse-slow opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-800 to-zinc-700 rounded-full blur-2xl animate-float opacity-50" />
@@ -43,17 +43,18 @@ const ProfileImage = memo(() => (
 
       <div className="relative">
         <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] transform transition-all duration-700 group-hover:scale-105">
-          <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" />
+          <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" aria-hidden="true" />
           
           {/* Optimized overlay effects - disabled on mobile */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10 transition-opacity duration-700 group-hover:opacity-0 hidden sm:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-500/20 via-transparent to-zinc-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10 transition-opacity duration-700 group-hover:opacity-0 hidden sm:block" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-500/20 via-transparent to-zinc-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" aria-hidden="true" />
           
           <img
             src="/PP-Crop.png"
-            alt="Profile"
+            alt="Portrait of Surya Pamungkas"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
             loading="lazy"
+            decoding="async"
           />
 
           {/* Advanced hover effects - desktop only */}
@@ -246,23 +247,25 @@ const AboutPage = () => {
       </div>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="/CV_Nur_Hidayat_Surya_Pamungkas.pdf" target="_blank" rel="noopener noreferrer" className="w-full lg:w-auto">
-              <button 
+              <a
+                href="/CV_Nur_Hidayat_Surya_Pamungkas.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-aos="fade-up"
                 data-aos-duration="800"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg bg-zinc-100 text-zinc-900 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 shadow-lg hover:shadow-xl "
+                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg bg-zinc-100 text-zinc-900 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
               >
-                <FileText className="w-4 h-4 sm:w-5 sm:h-5" /> Download CV
-              </button>
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                <span>Download CV</span>
               </a>
-              <a href="#Portofolio" className="w-full lg:w-auto">
-              <button 
+              <a
+                href="#Portofolio"
                 data-aos="fade-up"
                 data-aos-duration="1000"
-                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-white/20 text-zinc-300 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-white/10 "
+                className="w-full lg:w-auto sm:px-6 py-2 sm:py-3 rounded-lg border border-white/20 text-zinc-300 font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center lg:justify-start gap-2 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
               >
-                <Code className="w-4 h-4 sm:w-5 sm:h-5" /> View Projects
-              </button>
+                <Code className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                <span>View Projects</span>
               </a>
             </div>
           </div>
@@ -270,7 +273,7 @@ const AboutPage = () => {
           <ProfileImage />
         </div>
 
-        <a href="#Portofolio">
+        <a href="#Portofolio" aria-label="View portfolio projects and certificates">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 cursor-pointer">
             {statsData.map((stat) => (
               <StatCard key={stat.label} {...stat} />

@@ -119,14 +119,17 @@ const CommentForm = memo(({ onSubmit, isSubmitting }) => {
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1000">
-                <label className="block text-sm font-medium text-zinc-300">
-                    Name <span className="text-red-400">*</span>
+                <label htmlFor="comment-name" className="block text-sm font-medium text-zinc-300">
+                    Name <span className="text-red-400" aria-hidden="true">*</span>
                 </label>
                 <input
                     type="text"
+                    id="comment-name"
+                    name="userName"
+                    autoComplete="name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                     maxLength={15}
+                    maxLength={15}
                     placeholder="Enter your name"
                     className="w-full p-3 rounded-xl bg-black/20 border border-white/10 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-white/20 transition-all"
                     required
@@ -134,14 +137,15 @@ const CommentForm = memo(({ onSubmit, isSubmitting }) => {
             </div>
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1200">
-                <label className="block text-sm font-medium text-zinc-300">
-                    Message <span className="text-red-400">*</span>
+                <label htmlFor="comment-message" className="block text-sm font-medium text-zinc-300">
+                    Message <span className="text-red-400" aria-hidden="true">*</span>
                 </label>
                 <textarea
                     ref={textareaRef}
+                    id="comment-message"
+                    name="comment"
                     value={newComment}
-                     maxLength={200}
-
+                    maxLength={200}
                     onChange={handleTextareaChange}
                     placeholder="Write your message here..."
                     className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-white/20 transition-all resize-none min-h-[120px]"
@@ -150,7 +154,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting }) => {
             </div>
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1400">
-                <label className="block text-sm font-medium text-zinc-300">
+                <label htmlFor="comment-photo" className="block text-sm font-medium text-zinc-300">
                     Profile Photo <span className="text-zinc-500">(optional)</span>
                 </label>
                 <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
@@ -177,6 +181,7 @@ const CommentForm = memo(({ onSubmit, isSubmitting }) => {
                     ) : (
                         <div className="w-full">
                             <input
+                                id="comment-photo"
                                 type="file"
                                 ref={fileInputRef}
                                 onChange={handleImageChange}
@@ -186,9 +191,9 @@ const CommentForm = memo(({ onSubmit, isSubmitting }) => {
                             <button
                                 type="button"
                                 onClick={() => fileInputRef.current?.click()}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-500/20 text-zinc-400 hover:bg-zinc-500/30 transition-all border border-dashed border-zinc-500/50 hover:border-zinc-500 group"
+                                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-500/20 text-zinc-400 hover:bg-zinc-500/30 transition-all border border-dashed border-zinc-500/50 hover:border-zinc-500 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
                             >
-                                <ImagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                <ImagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
                                 <span>Choose Profile Photo</span>
                             </button>
                             <p className="text-center text-zinc-500 text-sm mt-2">
@@ -393,8 +398,8 @@ const Komentar = () => {
             </div>
             <div className="p-6 space-y-6">
                 {error && (
-                    <div className="flex items-center gap-2 p-4 text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl" data-aos="fade-in">
-                        <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <div role="alert" className="flex items-center gap-2 p-4 text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl" data-aos="fade-in">
+                        <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                         <p className="text-sm">{error}</p>
                     </div>
                 )}
@@ -403,7 +408,13 @@ const Komentar = () => {
                     <CommentForm onSubmit={handleCommentSubmit} isSubmitting={isSubmitting} />
                 </div>
 
-                <div className="space-y-4 h-[328px] overflow-y-auto overflow-x-hidden custom-scrollbar pt-1 pr-1 " data-aos="fade-up" data-aos-delay="200">
+                <div
+                    aria-live="polite"
+                    aria-label="Comments list"
+                    className="space-y-4 h-[328px] overflow-y-auto overflow-x-hidden custom-scrollbar pt-1 pr-1"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
                     {/* Pinned Comment */}
                     {pinnedComment && (
                         <div data-aos="fade-down" data-aos-duration="800">
@@ -419,7 +430,7 @@ const Komentar = () => {
                     {/* Regular Comments */}
                     {comments.length === 0 && !pinnedComment ? (
                         <div className="text-center py-8" data-aos="fade-in">
-                            <UserCircle2 className="w-12 h-12 text-zinc-400 mx-auto mb-3 opacity-50" />
+                            <UserCircle2 className="w-12 h-12 text-zinc-400 mx-auto mb-3 opacity-50" aria-hidden="true" />
                             <p className="text-zinc-500">No comments yet. Start the conversation!</p>
                         </div>
                     ) : (
@@ -436,19 +447,25 @@ const Komentar = () => {
                 </div>
             </div>
             <style>{`
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
+                .custom-scrollbar {
+                    scrollbar-color: rgba(161, 161, 170, 0.4) rgba(255, 255, 255, 0.05);
+                    scrollbar-width: thin;
                 }
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 6px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(161, 161, 170, 0.5);
-                    border-radius: 6px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: rgba(161, 161, 170, 0.7);
+                @supports not (scrollbar-color: auto) {
+                    .custom-scrollbar::-webkit-scrollbar {
+                        width: 6px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-track {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 6px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                        background: rgba(161, 161, 170, 0.5);
+                        border-radius: 6px;
+                    }
+                    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                        background: rgba(161, 161, 170, 0.7);
+                    }
                 }
             `}</style>
         </div>

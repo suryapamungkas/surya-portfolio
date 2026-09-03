@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, memo } from "react"
 import { Helmet } from "react-helmet-async"
-import { Github, Linkedin, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Instagram } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -31,31 +31,32 @@ const TechStack = memo(({ tech }) => (
 ));
 
 const CTAButton = memo(({ href, text, icon: Icon }) => (
-  <a href={href}>
-    <button className="group relative w-[160px]">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 to-zinc-700 rounded-xl opacity-20 blur-md group-hover:opacity-60 transition-all duration-700"></div>
-      <div className="relative h-11 bg-white/5 backdrop-blur-xl rounded-lg border border-white/10 shadow-sm leading-none overflow-hidden">
-        <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-white/5 to-white/10"></div>
-        <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm group-hover:gap-3 transition-all duration-300">
-          <span className="bg-gradient-to-r from-zinc-100 to-zinc-300 bg-clip-text text-transparent font-medium z-10">
-            {text}
-          </span>
-          <Icon className={`w-4 h-4 text-zinc-300 ${text === 'Contact' ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} />
+  <a href={href} className="group relative inline-block w-[160px] select-none">
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-500 to-zinc-700 rounded-xl opacity-20 blur-md group-hover:opacity-60 transition-all duration-700" aria-hidden="true"></div>
+    <div className="relative h-11 bg-white/5 backdrop-blur-xl rounded-lg border border-white/10 shadow-sm leading-none overflow-hidden">
+      <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-white/5 to-white/10" aria-hidden="true"></div>
+      <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm group-hover:gap-3 transition-all duration-300">
+        <span className="bg-gradient-to-r from-zinc-100 to-zinc-300 bg-clip-text text-transparent font-medium z-10">
+          {text}
         </span>
-      </div>
-    </button>
+        <Icon className={`w-4 h-4 text-zinc-300 ${text === 'Contact' ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} aria-hidden="true" />
+      </span>
+    </div>
   </a>
 ));
 
 const SocialLink = memo(({ icon: Icon, link, label }) => (
-  <a href={link} target="_blank" rel="noopener noreferrer" aria-label={label}>
-    <button className="group relative p-3"
-      aria-label={label}>
-      <div className="absolute inset-0 bg-gradient-to-r from-zinc-400 to-zinc-600 rounded-xl blur opacity-10 group-hover:opacity-30 transition duration-300"></div>
-      <div className="relative rounded-xl bg-white/5 backdrop-blur-xl p-2 flex items-center justify-center border border-white/10 shadow-sm group-hover:border-zinc-500 transition-all duration-300">
-        <Icon className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" />
-      </div>
-    </button>
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label}
+    className="group relative inline-flex p-3 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-zinc-300"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-zinc-400 to-zinc-600 rounded-xl blur opacity-10 group-hover:opacity-30 transition duration-300" aria-hidden="true"></div>
+    <div className="relative rounded-xl bg-white/5 backdrop-blur-xl p-2 flex items-center justify-center border border-white/10 shadow-sm group-hover:border-zinc-500 transition-all duration-300">
+      <Icon className="w-5 h-5 text-zinc-400 group-hover:text-zinc-100 transition-colors" aria-hidden="true" />
+    </div>
   </a>
 ));
 
@@ -215,7 +216,10 @@ const Home = () => {
                   }`}>
                     <img
                       src="/PP-Crop.png"
-                      alt="Profile Picture"
+                      alt="Portrait of Surya Pamungkas"
+                      fetchPriority="high"
+                      width="480"
+                      height="480"
                       className={`w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px] rounded-full object-cover border-4 border-white/5 shadow-[0_0_40px_rgba(255,255,255,0.02)] transition-all duration-500 ${
                         isHovering 
                           ? "scale-105 rotate-2 shadow-[0_0_60px_rgba(255,255,255,0.05)] border-white/10" 
@@ -226,7 +230,7 @@ const Home = () => {
 
                   <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
                     isHovering ? "opacity-30" : "opacity-10"
-                  }`}>
+                  }`} aria-hidden="true">
                     <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-zinc-500/5 to-zinc-400/5 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
                       isHovering ? "scale-110" : "scale-100"
                     }`}>

@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { supabase } from "../supabase"; 
 import CardProject from "../components/CardProject";
 import TechStackIcon from "../components/TechStackIcon";
+import { predefinedProjects } from "../data/projects";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Certificate from "../components/Certificate";
@@ -66,7 +67,8 @@ function TabPanel({ children, value, index, ...other }) {
       role="tabpanel"
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
-      className="p-2 sm:p-6"
+      tabIndex={0}
+      className="p-2 sm:p-6 outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 rounded-2xl"
       {...other}
     >
       {children}
@@ -103,27 +105,23 @@ export default function Portofolio() {
   }, []);
 
   const fetchData = useCallback(async () => {
-    const exportProject = {
-      id: "trustchain-umkm",
-      Title: "TrustChain UMKM",
-      Description: "A robust supply chain verification infrastructure that transforms opacity into transparency for global export-import trade. By integrating Blockchain technology with advanced AI analytics, TrustChain empowers MSMEs to achieve secure transactions and seamless cross-border commerce.",
-      Img: "/trustchain.png",
-      TechStack: ["React", "Blockchain", "AI Analysis"],
-      Link: "#",
-      Github: "#",
-    };
-
-    const rootFactProject = {
-      id: "root-fact-app",
-      Title: "Root Fact App",
-      Description: "An innovative AI-powered application designed to seamlessly detect and identify various vegetables using computer vision. By leveraging advanced machine learning models, Root Fact provides accurate real-time classifications and unlocks a treasure trove of engaging, educational fun facts about each plant, making botanical and nutritional discovery an interactive experience.",
-      Img: "/root-fact-app.png",
-      TechStack: ["React", "Machine Learning", "Computer Vision"],
-      Link: "#",
-      Github: "#",
-    };
-
-    const dicodingCertificates = [
+    const allPredefinedCertificates = [
+      { 
+        id: 'cert-lppi-1', 
+        Name: 'DIGDAYA Practitioner Phase', 
+        Issuer: 'LPPI', 
+        Date: 'Aug 2026', 
+        CredentialID: 'f485d32a-cb6b-4fd2-b0ad-23917571c691',
+        CredentialURL: 'https://credsverse.com/credentials/f485d32a-cb6b-4fd2-b0ad-23917571c691?preview=1'
+      },
+      { 
+        id: 'cert-lppi-2', 
+        Name: 'DIGDAYA Essential Phase', 
+        Issuer: 'LPPI', 
+        Date: 'Aug 2026', 
+        CredentialID: '3834df4f-91dd-449a-af9d-c9cfa6f16b3a',
+        CredentialURL: 'https://credsverse.com/credentials/3834df4f-91dd-449a-af9d-c9cfa6f16b3a?preview=1'
+      },
       { id: 'cert-1', Name: 'Belajar Fundamental Generative AI', Issuer: 'Dicoding Indonesia', Date: 'Jul 2026', CredentialID: 'ERZRLQK7QZYV' },
       { id: 'cert-2', Name: 'Membangun Sistem Machine Learning', Issuer: 'Dicoding Indonesia', Date: 'Jul 2026', CredentialID: 'JMZVO6JEQXN9' },
       { id: 'cert-3', Name: 'Belajar Penerapan Machine Learning untuk Flutter', Issuer: 'Dicoding Indonesia', Date: 'Jul 2026', CredentialID: '1OP8RQNWBZQK' },
@@ -147,8 +145,8 @@ export default function Portofolio() {
         supabase.from("certificates").select("*").order('id', { ascending: false }), 
       ]);
 
-      const projectData = [exportProject, rootFactProject, ...(projectsResponse.data || [])];
-      const certificateData = [...(certificatesResponse.data || []), ...dicodingCertificates];
+      const projectData = [...predefinedProjects, ...(projectsResponse.data || [])];
+      const certificateData = [...(certificatesResponse.data || []), ...allPredefinedCertificates];
 
       setProjects(projectData);
       setCertificates(certificateData);
@@ -159,10 +157,10 @@ export default function Portofolio() {
       window.dispatchEvent(new Event("storage_updated"));
     } catch (error) {
       console.error("Error fetching data from Supabase:", error.message);
-      setProjects([exportProject, rootFactProject]);
-      setCertificates(dicodingCertificates);
-      localStorage.setItem("projects", JSON.stringify([exportProject, rootFactProject]));
-      localStorage.setItem("certificates", JSON.stringify(dicodingCertificates));
+      setProjects(predefinedProjects);
+      setCertificates(allPredefinedCertificates);
+      localStorage.setItem("projects", JSON.stringify(predefinedProjects));
+      localStorage.setItem("certificates", JSON.stringify(allPredefinedCertificates));
       window.dispatchEvent(new Event("storage_updated"));
     }
   }, []);
@@ -190,6 +188,21 @@ export default function Portofolio() {
   const displayedProjects = showAllProjects ? projects : projects.slice(0, initialItems);
   const displayedCertificates = showAllCertificates ? certificates : certificates.slice(0, initialItems);
 
+  const handleTabKeyDown = (e, currentIndex) => {
+    const tabsCount = 3;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % tabsCount;
+      setValue(nextIndex);
+      document.getElementById(`full-width-tab-${nextIndex}`)?.focus();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prevIndex = (currentIndex - 1 + tabsCount) % tabsCount;
+      setValue(prevIndex);
+      document.getElementById(`full-width-tab-${prevIndex}`)?.focus();
+    }
+  };
+
   return (
     <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-transparent overflow-hidden" id="Portofolio">
       <div className="text-center pb-10" data-aos="fade-up" data-aos-duration="1000">
@@ -213,7 +226,11 @@ export default function Portofolio() {
       <div className="w-full">
         {/* Custom AppBar and Tabs using Tailwind */}
         <div className="relative mb-6 rounded-2xl border border-white/10 bg-white/5 shadow-sm px-2 md:px-4 backdrop-blur-md">
-          <div className="flex justify-between items-center py-2 h-[70px] gap-2 overflow-x-auto no-scrollbar">
+          <div
+            role="tablist"
+            aria-label="Portfolio content sections"
+            className="flex justify-between items-center py-2 h-[70px] gap-2 overflow-x-auto no-scrollbar"
+          >
             {[ 
               { label: "Projects", icon: Code }, 
               { label: "Certificates", icon: Award }, 
@@ -221,19 +238,24 @@ export default function Portofolio() {
             ].map((tab, idx) => (
               <button
                 key={idx}
-                onClick={() => setValue(idx)}
+                type="button"
+                role="tab"
+                aria-selected={value === idx}
+                tabIndex={value === idx ? 0 : -1}
                 id={`full-width-tab-${idx}`}
                 aria-controls={`full-width-tabpanel-${idx}`}
+                onClick={() => setValue(idx)}
+                onKeyDown={(e) => handleTabKeyDown(e, idx)}
                 className={`
                   flex-1 min-w-[120px] flex flex-col items-center justify-center p-3 rounded-xl
-                  font-semibold transition-all duration-300 ease-out z-10 mx-1
+                  font-semibold transition-all duration-300 ease-out z-10 mx-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400
                   ${value === idx 
                     ? "text-zinc-100 bg-white/10 shadow-sm" 
                     : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5 hover:-translate-y-0.5"
                   }
                 `}
               >
-                <tab.icon className={`w-5 h-5 mb-1 transition-all duration-300 ${value === idx ? "text-zinc-300 scale-110" : "group-hover:rotate-6 scale-100"}`} />
+                <tab.icon className={`w-5 h-5 mb-1 transition-all duration-300 ${value === idx ? "text-zinc-300 scale-110" : "group-hover:rotate-6 scale-100"}`} aria-hidden="true" />
                 <span className="text-sm md:text-base">{tab.label}</span>
               </button>
             ))}
@@ -280,7 +302,14 @@ export default function Portofolio() {
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
-                    <Certificate ImgSertif={certificate.Img} Name={certificate.Name} Issuer={certificate.Issuer} Date={certificate.Date} CredentialID={certificate.CredentialID} />
+                    <Certificate 
+                      ImgSertif={certificate.Img} 
+                      Name={certificate.Name} 
+                      Issuer={certificate.Issuer} 
+                      Date={certificate.Date} 
+                      CredentialID={certificate.CredentialID} 
+                      CredentialURL={certificate.CredentialURL}
+                    />
                   </div>
                 ))}
               </div>

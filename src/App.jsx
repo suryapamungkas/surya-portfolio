@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
 import Navbar from "./components/Navbar";
@@ -32,14 +32,18 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
 
       {!showWelcome && (
         <>
+          <a href="#main-content" className="skip-link visually-hidden">
+            Skip to main content
+          </a>
           <Navbar />
-      
-          <Home />
-          <About />
-          <Suspense fallback={<div className="h-20" />}>
-            <Portofolio />
-            <ContactPage />
-          </Suspense>
+          <main id="main-content" tabIndex="-1" className="outline-none">
+            <Home />
+            <About />
+            <Suspense fallback={<div className="h-20" />}>
+              <Portofolio />
+              <ContactPage />
+            </Suspense>
+          </main>
           <Footer />
         </>
       )}
@@ -49,9 +53,14 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
 
 const ProjectPageLayout = () => (
   <>
-    <Suspense fallback={<div className="min-h-screen" />}>
-      <ProjectDetails />
-    </Suspense>
+    <a href="#main-content" className="skip-link visually-hidden">
+      Skip to main content
+    </a>
+    <main id="main-content" tabIndex="-1" className="outline-none">
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <ProjectDetails />
+      </Suspense>
+    </main>
     <Footer />
   </>
 );
@@ -59,12 +68,31 @@ const ProjectPageLayout = () => (
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
 
+  // Progressive enhancement fallback for browsers without CSS animation-timeline
+  useEffect(() => {
+    if (typeof window !== "undefined" && !window.CSS?.supports?.("animation-timeline", "scroll()")) {
+      const progressBar = document.getElementById("scroll-progress");
+      if (!progressBar) return;
+
+      const handleScroll = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable > 0) {
+          const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
+          progressBar.style.transform = `scaleX(${ratio})`;
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
   return (
-    
     <HelmetProvider>
-      <div className="pointer-events-none">
-  <AnimatedBackground />
-</div>
+      <div id="scroll-progress" aria-hidden="true" />
+      <div className="pointer-events-none" aria-hidden="true">
+        <AnimatedBackground />
+      </div>
       <BrowserRouter>
         <Routes>
           {/* PUBLIC */}
