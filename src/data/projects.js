@@ -45,12 +45,12 @@ export const predefinedProjects = [
       "Real-time tamper-proof shipment validation & tamper detection",
       "Decentralized identity & compliance verification for MSMEs"
     ],
-    Link: "#",
+    Link: "https://trustchain-umkm.vercel.app/",
     Github: "https://github.com/suryapamungkas",
   },
   {
     id: "smart-vegetable-detector",
-    Title: "RootFact",
+    Title: "smart-vegetable-detector",
     Description:
       "A client-side AI Progressive Web App featuring real-time vegetable classification with TensorFlow.js and on-device nutritional fun fact generation using Transformers.js (LaMini-Flan-T5). Fully offline-capable (PWA) with WebGPU acceleration.",
     Img: "/smart-vegetable-detector.png",

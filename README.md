@@ -36,7 +36,7 @@ A modern, highly polished, and responsive personal portfolio crafted with **Reac
 - **Featured Projects:**
   - **NusaDecarb:** Enterprise Green-Tech & ESG Advisory Platform for industrial decarbonization towards Indonesia's Net Zero Emission 2060, built with React 19, TypeScript, and Tailwind CSS.
   - **LLM Evaluation Dashboard:** Modern LLM evaluation and prompt engineering dashboard featuring parallel benchmarking, LLM-as-a-Judge grading, Ground Truth verification, and Prompt A/B testing with FastAPI, Streamlit, and Docker.
-  - **RootFact (Smart Vegetable Detector):** Client-side AI Progressive Web App (PWA) featuring real-time vegetable classification with TensorFlow.js and on-device nutritional fun fact generation using Transformers.js (LaMini-Flan-T5).
+  - **smart-vegetable-detector:** Client-side AI Progressive Web App (PWA) featuring real-time vegetable classification with TensorFlow.js and on-device nutritional fun fact generation using Transformers.js (LaMini-Flan-T5).
   - **TrustChain UMKM:** Supply chain verification infrastructure for export-import MSMEs leveraging Blockchain and AI Analytics.
 - **Interactive Feedback System:** Real-time visitor comments & feedback powered by Supabase with administrative moderation (pin/unpin).
 - **Smooth Interactive Experience:** Optimized animations orchestrated via **Framer Motion** and **AOS (Animate On Scroll)**.

@@ -215,7 +215,7 @@ const Home = () => {
                     isHovering ? "scale-105" : "scale-100"
                   }`}>
                     <img
-                      src="/PP-Crop.png"
+                      src="/formal-crop.jpg"
                       alt="Portrait of Surya Pamungkas"
                       fetchPriority="high"
                       width="480"
