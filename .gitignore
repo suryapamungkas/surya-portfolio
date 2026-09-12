@@ -26,3 +26,6 @@ dist/
 *.sln
 *.sw?
 *.env
+
+# Local AI Skills & Prompts
+skills/

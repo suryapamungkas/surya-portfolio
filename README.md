@@ -1,7 +1,7 @@
 # Surya Pamungkas — Personal Portfolio 🚀
 
 <div align="center">
-  <img src="public/PP-Crop.png" alt="Surya Pamungkas" width="120" style="border-radius: 50%;" />
+  <img src="public/formal-crop.jpg" alt="Surya Pamungkas" width="120" style="border-radius: 50%;" />
   
   <h3>Full Stack Developer & AI Engineer Enthusiast</h3>
 
@@ -34,6 +34,8 @@ A modern, highly polished, and responsive personal portfolio crafted with **Reac
 ### 🌟 Key Highlights
 - **Premium Minimalist Dark Aesthetic:** Built using custom glassmorphism layers (`bg-white/5`, `border-white/10`, and smooth silver sheen gradients).
 - **Featured Projects:**
+  - **Nusa Asset Management:** Enterprise Asset Management (EAM) system built with Next.js 16, React 19, TypeScript, and Tailwind CSS. Features QR code tracking, branch mutations, PSAK 16 straight-line depreciation, and full PMO governance documentation (PMBOK 7th Edition).
+  - **LexIndonesia:** Indonesia’s premier integrated legal intelligence platform & regulatory compliance ecosystem modeled after Hukumonline, featuring indexed law search, multi-tier RBAC, My Workspace, and a companion Chrome Extension (MV3).
   - **NusaDecarb:** Enterprise Green-Tech & ESG Advisory Platform for industrial decarbonization towards Indonesia's Net Zero Emission 2060, built with React 19, TypeScript, and Tailwind CSS.
   - **LLM Evaluation Dashboard:** Modern LLM evaluation and prompt engineering dashboard featuring parallel benchmarking, LLM-as-a-Judge grading, Ground Truth verification, and Prompt A/B testing with FastAPI, Streamlit, and Docker.
   - **smart-vegetable-detector:** Client-side AI Progressive Web App (PWA) featuring real-time vegetable classification with TensorFlow.js and on-device nutritional fun fact generation using Transformers.js (LaMini-Flan-T5).
@@ -66,6 +68,7 @@ surya-portfolio/
 ├── public/                 # Static assets, certificate images & project screenshots
 ├── src/
 │   ├── components/         # Reusable UI components (Navbar, Background, Cards, etc.)
+│   ├── data/               # Centralized project datasets & configurations
 │   ├── Pages/              # Page views (Home, About, Portfolio, Contact, etc.)
 │   ├── utils/              # Utility functions & helper scripts
 │   ├── App.jsx             # Application routes & layouts

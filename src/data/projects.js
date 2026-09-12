@@ -1,5 +1,39 @@
 export const predefinedProjects = [
   {
+    id: "nusa-asset-management",
+    Title: "Nusa Asset Management",
+    Description:
+      "An enterprise-grade Asset Management (EAM) system built with Next.js 16, React 19, TypeScript, and Tailwind CSS. Features multi-branch physical asset tracking, instant QR code generation, PSAK 16 straight-line depreciation, asset mutation workflows, and full PMO governance documentation (PMBOK 7th Edition).",
+    Img: "/nusa-asset-management.png",
+    TechStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    Features: [
+      "Multi-branch enterprise inventory tracking across regional offices (Jakarta, Surabaya, Medan, Makassar)",
+      "Automated PSAK 16 Straight-Line depreciation engine and real-time book value auditing",
+      "Instant QR code tracking engine and SVG physical barcode/label generator",
+      "Inter-branch asset mutation & transfer lifecycle workflow with tiered approval validation",
+      "Comprehensive PMO governance framework conforming to PMBOK 7th Edition & Agile standards"
+    ],
+    Link: "https://nusa-asset-management.vercel.app",
+    Github: "https://github.com/suryapamungkas/nusa-asset-management",
+  },
+  {
+    id: "lexindonesia-legal-platform",
+    Title: "LexIndonesia",
+    Description:
+      "Indonesia’s premier integrated legal intelligence platform & regulatory compliance ecosystem modeled after Hukumonline. Features an indexed global law search engine with real-time enactment status, multi-tier RBAC (Free vs Pro), interactive legal research workspace, and a companion Chrome Extension (Manifest V3).",
+    Img: "/lexindonesia-legal-platform.png",
+    TechStack: ["JavaScript", "Vite", "Chrome Extension", "Tailwind CSS", "RegTech"],
+    Features: [
+      "Indexed multi-dimensional law search engine with keyword highlighting and real-time status indicators",
+      "Role-Based Access Control (RBAC) supporting Free and Pro Subscriber access tiers",
+      "Four specialized legal ecosystem catalogs: PRO Intelligence, SOLUSI Tech, INFO HUKUM, and EVENT",
+      "My Workspace legal research notebook with local autosave, annotation, and export tools",
+      "Companion Chrome Extension (Manifest V3) utilizing Side Panel API for side-by-side legal analysis"
+    ],
+    Link: "https://lexindonesia.vercel.app",
+    Github: "https://github.com/suryapamungkas/lexindonesia-legal-platform",
+  },
+  {
     id: "nusa-decarb",
     Title: "NusaDecarb",
     Description:

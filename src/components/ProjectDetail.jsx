@@ -20,6 +20,8 @@ import {
   Zap,
   Database,
   BarChart3,
+  Scale,
+  Puzzle,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
@@ -28,6 +30,8 @@ import { predefinedProjects } from "../data/projects";
 const TECH_ICONS = {
   React: Globe,
   "React 19": Globe,
+  "Next.js": Globe,
+  "Next.js 16": Globe,
   TypeScript: Code,
   Vite: Cpu,
   Tailwind: Layout,
@@ -48,6 +52,10 @@ const TECH_ICONS = {
   SQLite: Database,
   "AI Analysis": BrainCircuit,
   Blockchain: Layers,
+  "Framer Motion": Sparkles,
+  "Chrome Extension": Puzzle,
+  RegTech: Scale,
+  LegalTech: Scale,
   default: Package,
 };
 
