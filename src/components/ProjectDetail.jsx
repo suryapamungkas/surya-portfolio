@@ -22,6 +22,8 @@ import {
   BarChart3,
   Scale,
   Puzzle,
+  GraduationCap,
+  ShieldCheck,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
@@ -32,6 +34,7 @@ const TECH_ICONS = {
   "React 19": Globe,
   "Next.js": Globe,
   "Next.js 16": Globe,
+  "Next.js 14": Globe,
   TypeScript: Code,
   Vite: Cpu,
   Tailwind: Layout,
@@ -56,6 +59,8 @@ const TECH_ICONS = {
   "Chrome Extension": Puzzle,
   RegTech: Scale,
   LegalTech: Scale,
+  EdTech: GraduationCap,
+  FinTech: ShieldCheck,
   default: Package,
 };
 

@@ -36,6 +36,8 @@ A modern, highly polished, and responsive personal portfolio crafted with **Reac
 - **Featured Projects:**
   - **Nusa Asset Management:** Enterprise Asset Management (EAM) system built with Next.js 16, React 19, TypeScript, and Tailwind CSS. Features QR code tracking, branch mutations, PSAK 16 straight-line depreciation, and full PMO governance documentation (PMBOK 7th Edition).
   - **LexIndonesia:** Indonesia’s premier integrated legal intelligence platform & regulatory compliance ecosystem modeled after Hukumonline, featuring indexed law search, multi-tier RBAC, My Workspace, and a companion Chrome Extension (MV3).
+  - **Resilio.id:** Indonesia's economic resilience and household financial shock response platform built with Next.js 14, TypeScript, and Tailwind CSS, featuring an Early Warning financial health check engine and 6 core resilience pillars.
+  - **SDM Unggul:** Indonesian Human Capital & Future Skills edutech platform featuring an 8-pillar vocational curriculum, low-bandwidth adaptive mode for 3T regions, and career readiness diagnostics.
   - **NusaDecarb:** Enterprise Green-Tech & ESG Advisory Platform for industrial decarbonization towards Indonesia's Net Zero Emission 2060, built with React 19, TypeScript, and Tailwind CSS.
   - **LLM Evaluation Dashboard:** Modern LLM evaluation and prompt engineering dashboard featuring parallel benchmarking, LLM-as-a-Judge grading, Ground Truth verification, and Prompt A/B testing with FastAPI, Streamlit, and Docker.
   - **smart-vegetable-detector:** Client-side AI Progressive Web App (PWA) featuring real-time vegetable classification with TensorFlow.js and on-device nutritional fun fact generation using Transformers.js (LaMini-Flan-T5).

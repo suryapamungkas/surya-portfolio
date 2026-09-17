@@ -34,6 +34,40 @@ export const predefinedProjects = [
     Github: "https://github.com/suryapamungkas/lexindonesia-legal-platform",
   },
   {
+    id: "resilio.id",
+    Title: "Resilio.id",
+    Description:
+      "Indonesia's economic resilience and household financial shock response platform. Built with Next.js 14, TypeScript, and Tailwind CSS, featuring an Early Warning financial health check engine, 6 core resilience pillars, and emergency fund calculators.",
+    Img: "/resilio.id.png",
+    TechStack: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "FinTech"],
+    Features: [
+      "Early Warning Financial Health Check diagnostic engine powered by React Hook Form & Zod",
+      "Interactive 6-Pillar Economic Resilience grid addressing unemployment, emergency funds, and ethical micro-finance",
+      "Dynamic Emergency Cash Buffer & Micro-Protection calculator with flexible savings milestones",
+      "Crisis Rapid Response 48-hour protocol for unexpected layoffs and predatory lending rescue",
+      "Dual Segment Architecture tailored for Households/Families and Community/B2B gotong-royong funds"
+    ],
+    Link: "https://resilioid.vercel.app",
+    Github: "https://github.com/suryapamungkas/resilio.id",
+  },
+  {
+    id: "vanguard-human-capital",
+    Title: "SDM Unggul",
+    Description:
+      "Indonesian Human Capital & Future Skills edutech platform. Featuring an 8-pillar vocational curriculum, low-bandwidth adaptive mode for 3T regions, interactive video previews, scholarship simulators, and career readiness diagnostic testing.",
+    Img: "/vanguard-human-capital.png",
+    TechStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "EdTech"],
+    Features: [
+      "8-Pillar comprehensive vocational curriculum spanning AI literacy, applied finance, and 3T empowerment",
+      "Adaptive Bandwidth Mode (<5MB audio format & lightweight rendering) for frontier 3T regions",
+      "Interactive Career Readiness Diagnostic Test generating personalized 90-day learning roadmaps",
+      "Full interactive video preview player with chapter scrubbing and audio-only playback",
+      "3T Affirmative Scholarship & CSR subsidy simulator with real-time voucher validation"
+    ],
+    Link: "https://sdm-unggul.vercel.app",
+    Github: "https://github.com/suryapamungkas/vanguard-human-capital",
+  },
+  {
     id: "nusa-decarb",
     Title: "NusaDecarb",
     Description:
