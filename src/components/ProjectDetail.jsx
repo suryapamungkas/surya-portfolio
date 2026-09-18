@@ -24,6 +24,7 @@ import {
   Puzzle,
   GraduationCap,
   ShieldCheck,
+  Map,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
@@ -61,6 +62,8 @@ const TECH_ICONS = {
   LegalTech: Scale,
   EdTech: GraduationCap,
   FinTech: ShieldCheck,
+  Leaflet: Map,
+  "Shadcn UI": Layout,
   default: Package,
 };
 

@@ -1,5 +1,22 @@
 export const predefinedProjects = [
   {
+    id: "traveloop",
+    Title: "Traveloop",
+    Description:
+      "A modern collaborative travel planning platform featuring interactive split-screen maps, smart itinerary builder, route optimization, and real-time budget management. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS.",
+    Img: "/traveloop.png",
+    TechStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Leaflet"],
+    Features: [
+      "Responsive split-screen layout synchronizing day-by-day itineraries with interactive maps",
+      "Multi-provider map engine supporting Leaflet, OpenStreetMap, Google Maps, and Mapbox",
+      "Smart Itinerary Builder with automatic travel duration and distance optimization",
+      "Integrated budget management and collaborative split-bill expense calculation",
+      "Global destination discovery catalog with curated attractions, reviews, and operating hours"
+    ],
+    Link: "https://traveloop-trip.vercel.app",
+    Github: "https://github.com/suryapamungkas/traveloop",
+  },
+  {
     id: "nusa-asset-management",
     Title: "Nusa Asset Management",
     Description:
