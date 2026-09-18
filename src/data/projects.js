@@ -1,5 +1,22 @@
 export const predefinedProjects = [
   {
+    id: "adidas-pure-concept",
+    Title: "Adidas Pure Concept",
+    Description:
+      "An Apple-inspired interactive e-commerce concept for Adidas footwear, engineered with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.",
+    Img: "/adidas-pure-concept.png",
+    TechStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    Features: [
+      "Apple-style sticky header with zero-delay interactive mega menu dropdowns",
+      "Hero staging and dynamic Bento grid showcase for iconic Adidas silhouettes",
+      "Interactive 3D exploded view detailing shoe layer engineering (Primeknit, BOOST™, Continental™)",
+      "Seamless light and dark mode parity with persistent local state",
+      "Accessible shopping drawers, size selectors, and keyboard navigation conforming to WCAG standards"
+    ],
+    Link: "https://adidas-pure-concept.vercel.app",
+    Github: "https://github.com/suryapamungkas/adidas-pure-concept",
+  },
+  {
     id: "traveloop",
     Title: "Traveloop",
     Description:

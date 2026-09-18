@@ -25,6 +25,7 @@ import {
   GraduationCap,
   ShieldCheck,
   Map,
+  ShoppingBag,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
@@ -64,6 +65,8 @@ const TECH_ICONS = {
   FinTech: ShieldCheck,
   Leaflet: Map,
   "Shadcn UI": Layout,
+  "E-Commerce": ShoppingBag,
+  Ecommerce: ShoppingBag,
   default: Package,
 };
 
