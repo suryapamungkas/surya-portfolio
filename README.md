@@ -166,7 +166,7 @@ CREATE TABLE public.portfolio_comments (
 - **Website:** [suryapamungkas.vercel.app](https://suryapamungkas.vercel.app)
 - **LinkedIn:** [linkedin.com/in/suryapamungkas](https://www.linkedin.com/in/suryapamungkas)
 - **GitHub:** [@suryapamungkas](https://github.com/suryapamungkas)
-- **Instagram:** [@suryaszy](https://www.instagram.com/suryaszy)
+- **Instagram:** [@lionelehe](https://www.instagram.com/lionelehe)
 
 ---
 

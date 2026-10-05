@@ -68,7 +68,7 @@ const TECH_STACK = ["Python", "Machine Learning", "Generative AI", "Google Cloud
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/suryapamungkas", label: "GitHub Profile" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/suryapamungkas", label: "LinkedIn Profile" },
-  { icon: Instagram, link: "https://www.instagram.com/suryaszy", label: "Instagram Profile" }
+  { icon: Instagram, link: "https://www.instagram.com/lionelehe", label: "Instagram Profile" }
 ];
 
 const Home = () => {
@@ -145,7 +145,7 @@ const Home = () => {
             "sameAs": [
               "https://github.com/suryapamungkas",
               "https://www.linkedin.com/in/suryapamungkas",
-              "https://www.instagram.com/suryaszy"
+              "https://www.instagram.com/lionelehe"
             ]
           }
         `}</script>
