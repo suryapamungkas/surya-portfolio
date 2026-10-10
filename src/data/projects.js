@@ -1,5 +1,22 @@
 export const predefinedProjects = [
   {
+    id: "baru-lagi",
+    Title: "BaruLagi",
+    Description:
+      "A certified refurbished electronics marketplace featuring dynamic multi-tier device grading, instant trade-in valuation engine, and a cinematic dark luxury UI. Engineered with Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma ORM, Framer Motion, and Lenis Scroll.",
+    Img: "/baru-lagi.png",
+    TechStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "Framer Motion", "Lenis Scroll", "E-Commerce"],
+    Features: [
+      "Cinematic Dark Luxury aesthetic with pure obsidian obsidian (#000000), electric lime accents (#D6F479), and Lenis smooth momentum scrolling",
+      "Dynamic multi-tier grading system (Fair, Good, Excellent) with real-time price updates and 25-point hardware inspection verification",
+      "Interactive Trade-In Valuation Calculator simulating instant trade-in quotes for old devices in 4 guided steps",
+      "Comprehensive slide-over cart drawer and multi-option checkout flow supporting automated bank transfers, instant QRIS, and 0% installments",
+      "Robust relational database schema powered by Prisma ORM and SQLite modeling hardware specs, grading variants, battery health analytics, and certified warranties"
+    ],
+    Link: "https://another-new-one.vercel.app",
+    Github: "https://github.com/suryapamungkas/baru-lagi",
+  },
+  {
     id: "adidas-pure-concept",
     Title: "Adidas Pure Concept",
     Description:

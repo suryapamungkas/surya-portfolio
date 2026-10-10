@@ -34,6 +34,7 @@ A modern, highly polished, and responsive personal portfolio crafted with **Reac
 ### 🌟 Key Highlights
 - **Premium Minimalist Dark Aesthetic:** Built using custom glassmorphism layers (`bg-white/5`, `border-white/10`, and smooth silver sheen gradients).
 - **Featured Projects:**
+  - **BaruLagi:** Indonesia’s premier certified refurbished electronics marketplace featuring dynamic multi-tier device grading, instant trade-in valuation engine, and a cinematic dark luxury UI built with Next.js 16, React 19, TypeScript, Tailwind CSS, Prisma ORM, and Framer Motion.
   - **Adidas Pure Concept:** Apple-inspired interactive e-commerce concept for Adidas footwear, engineered with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.
   - **Traveloop:** Collaborative travel planning platform featuring interactive split-screen maps, smart itinerary builder, route optimization, and real-time budget management with Next.js 16, React 19, TypeScript, and Leaflet.
   - **Nusa Asset Management:** Enterprise Asset Management (EAM) system built with Next.js 16, React 19, TypeScript, and Tailwind CSS. Features QR code tracking, branch mutations, PSAK 16 straight-line depreciation, and full PMO governance documentation (PMBOK 7th Edition).
